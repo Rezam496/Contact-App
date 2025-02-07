@@ -1,9 +1,9 @@
-import React from 'react'
+import styles from './ContactItem.module.css';
 
 function ContactItem({data:{ name, lastName , email , phone,id},deleteHandler}) {
     
   return (
-    <li key={id}>
+    <li className={styles.item}>
         <p>{name}{lastName}</p>
         <p>{email}</p>
         <p>{phone}</p>
