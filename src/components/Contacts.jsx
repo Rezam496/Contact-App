@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import inputs from '../constants/inputs';
 import ContactsList from './ContactsList';
 
 function Contacts() {
@@ -27,13 +27,19 @@ function Contacts() {
   return (
     <div>
         <div>
-            <input type="text"   placeholder='Name'     value={contact.name}    name='name' onChange={changeHandler}/>
-            <input type="text"   placeholder='Last Name'value={contact.lastName}name='lastName' onChange={changeHandler}/>
-            <input type="email"  placeholder='Email'    value={contact.email}   name='email' onChange={changeHandler}/>
-            <input type="number" placeholder='Phone'    value={contact.phone}   name='phone' onChange={changeHandler}/>
+            {inputs.map((input,index)=>(
+                <input 
+                key={index} 
+                type={input.type} 
+                placeholder={input.placeholder}  
+                value={contact[input.name]} 
+                name={input.name} 
+                onChange={changeHandler}/>))}
             <button onClick={addHandler}>Add Contact</button>
         </div>
+
         <div>{alert && <p>{alert}</p>}</div>
+
         <ContactsList contacts={contacts}/>
     </div>
   )
