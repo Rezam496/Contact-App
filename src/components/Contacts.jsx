@@ -25,6 +25,9 @@ function Contacts() {
         setContact({name:"",lastName:"",email:"",phone:""});
         setAlert("")
     }
+    const deleteHandler=(id)=>{
+        setContacts(contacts.filter((contact)=>contact.id!==id));
+     }
 
   return (
     <div>
@@ -42,7 +45,7 @@ function Contacts() {
 
         <div>{alert && <p>{alert}</p>}</div>
 
-        <ContactsList contacts={contacts}/>
+        <ContactsList contacts={contacts} deleteHandler={deleteHandler}/>
     </div>
   )
 }
