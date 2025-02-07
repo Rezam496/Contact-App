@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import inputs from '../constants/inputs';
 import ContactsList from './ContactsList';
+import { v4 } from 'uuid';
 
 function Contacts() {
 
-    const [contact , setContact]=useState({name:"",lastName:"",email:"",phone:""});
+    const [contact , setContact]=useState({id:"",name:"",lastName:"",email:"",phone:""});
     const [contacts , setContacts]=useState([]);
     const [alert , setAlert]=useState("");
 
@@ -19,7 +20,8 @@ function Contacts() {
             setAlert("please enter valid data!");
             return;
         }
-        setContacts((contacts)=>([...contacts,contact]));
+        const newContact={...contact,id:v4()};
+        setContacts((contacts)=>([...contacts,newContact]));
         setContact({name:"",lastName:"",email:"",phone:""});
         setAlert("")
     }
